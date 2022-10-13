@@ -72,9 +72,13 @@
       </div>
     </div>
   </div>
-
+  <h1>Último gerado:</h1>
   <div class="card-container">
     <div class="card" *ngFor="let item of sorted_array">{{ item }}</div>
+  </div>
+  <h1>Histórico:</h1>
+  <div class="card-container">
+    <div class="card" *ngFor="let item of games_array">{{ item }}</div>
   </div>
 
   <svg
