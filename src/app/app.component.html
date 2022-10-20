@@ -21,7 +21,7 @@
   <!-- botões -->
   <div class="container text-center">
     <div class="row">
-      <div class="col d-grid gap-2">
+      <div class="col d-grid gap-2 mb-3">
         <label for="numeros">números</label>
         <select
           name="numeros"
@@ -42,7 +42,7 @@
           <option>14</option>
           <option>15</option>
         </select>
-        <label for="qty">Quantidade</label>
+        <!-- <label for="qty">Quantidade</label>
         <select
           class="form-select"
           aria-label="Default select example"
@@ -54,8 +54,10 @@
           <option>2</option>
           <option>3</option>
           <option>4</option>
-        </select>
+        </select> -->
       </div>
+    </div>
+    <div class="row">
       <div class="col d-grid gap-2">
         <button
           type="button"
@@ -73,8 +75,8 @@
     </div>
   </div>
   <h1>Último gerado:</h1>
-  <div class="card-container">
-    <div class="card" *ngFor="let item of sorted_array">{{ item }}</div>
+  <div class="card-container d-flex">
+    <div class="card w-25 m-2" *ngFor="let item of sorted_array">{{ item }}</div>
   </div>
   <h1>Histórico:</h1>
   <div class="card-container">
