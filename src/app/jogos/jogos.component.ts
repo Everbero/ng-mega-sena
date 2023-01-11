@@ -25,4 +25,5 @@ export class JogosComponent implements OnInit {
   populate_arr(nros: string): void{
     this.localData.populate_arr(nros);
   };
+  
 }

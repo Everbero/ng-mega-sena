@@ -1,39 +1,29 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- Toolbar -->
+<!-- barra de endereços -->
 <div class="toolbar" role="banner">
-  <a class="nav-link text-light" href="/">
-  <img
-    width="120"
-    alt="Angular Logo"
-    src="../assets/NG.svg"
-  />
+  <a class="nav-link text-light">
+    <img width="120" alt="ng mega sena" src="assets/NG.svg" />
   </a>
-  <!-- <span>Welcome</span> -->
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link text-light" aria-current="page" href="/"
-            >Home</a
-          >
+        <div class="navbar-nav" *ngIf="isDev == true; else prod_links">
+          <a class="nav-link text-light" aria-current="page" href="/">Home</a>
           <a class="nav-link text-light" href="/jogos">Jogos</a>
         </div>
+        <ng-template #prod_links>
+          <div class="navbar-nav">
+            <a class="nav-link text-light" aria-current="page" href="/ng-mega-sena">Home</a>
+            <a class="nav-link text-light" href="/ng-mega-sena/jogos">Jogos</a>
+          </div>
+        </ng-template>
       </div>
     </div>
   </nav>
 
-  <div class="spacer"></div>
 </div>
-
+<!-- outlet -->
 <router-outlet> </router-outlet>
-
+<!-- rodapé -->
 <div class="footer">
   <svg
     id="clouds"

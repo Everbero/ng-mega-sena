@@ -1,7 +1,71 @@
-<div class="content" role="main">
-  <div class="card-container">
-    <div class="card">
-      <div class="card-title">Você tem {{ games.length }} jogos</div>
+<div class="content w-100" role="main">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col">
+        <div class="card h-100">
+          <h5 class="card-title">Jogos salvos</h5>
+
+          <div class="card-title">Você tem {{ games.length }} jogos</div>
+
+          <a *ngIf="isDev; else prod_link" href="/jogos" class="btn btn-primary"
+            >Ver jogos</a
+          >
+          <ng-template #prod_link
+            ><a href="/ng-mega-sena/jogos" class="btn btn-primary"
+              >Ver jogos</a
+            ></ng-template
+          >
+        </div>
+      </div>
+      <div class="col">
+        <div *ngIf="resultado; else other_content" class="card h-100">
+          <h5 class="card-title">Último sorteio</h5>
+          <div>#{{ resultado.numero }} - {{ resultado.dataApuracao }}</div>
+          <div>Dezenas: {{ resultado.listaDezenas }}</div>
+        </div>
+
+        <ng-template #other_content
+          ><p>
+            <ngb-alert>
+              A API de resultados está indisponível no momento
+            </ngb-alert>
+          </p></ng-template
+        >
+      </div>
+    </div>
+  </div>
+  <div class="container  mt-5">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Sobre este projeto</h5>
+          <p class="card-text light">
+            NG megasena é um projeto angular simples feito para um trabalho de
+            faculade. Este projeto contém 3 componentes (app, dashboard e home),
+            2 serviços que consomem as APIs localStorage e uma api genérica que
+            retorna o resultado do último sorteio da megasena.
+          </p>
+          <h6>Observações</h6>
+          <p>
+            Infelizmente a API que eu iria utilizar está fora do ar:
+            <a href="https://github.com/guto-alves/loterias-api"
+              >guto alves loterias</a
+            >
+            então estou usando um link provisório:
+            <a
+              href="https://servicebus2.caixa.gov.br/portaldeloterias/api/megasena"
+              >api caixa</a
+            >, esta não é uma API oficial, não aceita aceita CORS então estou
+            usando um proxi para acessar os dados, se os dados não estiverem
+            disponíveis, tente novamente em alguns minutos.
+          </p>
+          <p>
+            Pretendo extender este projeto futuramente durante o curso
+            adicionando a capacidade de detectar se um dos jogos gerados foi
+            sorteado, isso caso o autor da api volte a dar manutenção.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
