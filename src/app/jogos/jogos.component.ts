@@ -14,7 +14,6 @@ export class JogosComponent implements OnInit {
 
   ngOnInit(): void {
     this.localData.checkHistory();
-    this
   }
 
   reset_arr(): void{

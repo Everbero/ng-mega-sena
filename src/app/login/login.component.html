@@ -1,0 +1,52 @@
+<div class="content" role="main">
+  <div class="container">
+    <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-auto">
+          <input
+            type="text"
+            class="form-control"
+            id="staticEmail"
+            value=""
+            formControlName="username"
+          />
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="inputPassword" class="col-sm-2 col-form-label"
+          >Password</label
+        >
+        <div class="col-auto">
+          <input
+            type="password"
+            class="form-control"
+            id="inputPassword"
+            formControlName="password"
+          />
+        </div>
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-3">Autenticar</button>
+      </div>
+    </form>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Sobre este componente</h5>
+        <p class="card-text light">
+          Este componente de login aceita qualquer usuário e senha e se comporta
+          desta forma:
+        </p>
+        <br>
+        <ol>
+          <li>
+            Se não houver um usuário, um novo usuário é cadastrados com
+            os dados informados;
+          </li>
+          <li>Se já existir um usuário, a senha é verificada contra o que estiver salvo</li>
+          <li>Todos os dados e jogos são salvos no localStorage com o prefixo do usuário, permitindo a persistência de dados para vários usuários</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>

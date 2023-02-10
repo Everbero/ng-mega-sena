@@ -15,7 +15,7 @@ export class LocalStorageService {
 
   sorted_array: Array<any> = [];
   games_array: Array<any> = [];
-  last_game: any = []
+  last_game: any = [];
 
   // Fisher-Yates sort algorith
   private shuffleArray = (array: Array<number>) => {
@@ -28,7 +28,8 @@ export class LocalStorageService {
   };
 
   public checkHistory() {
-    let history: any = localStorage.getItem('historico');
+    let currentUser = localStorage.getItem('isLoggedIn');
+    let history: any = localStorage.getItem('historico_'+currentUser);
 
     if (history !== null) {
       history = JSON.parse(history);
@@ -42,21 +43,53 @@ export class LocalStorageService {
 
   public populate_arr = (nros: string) => {
     this.shuffleArray(this.main_array);
-    
+
+    let currentUser = localStorage.getItem('isLoggedIn')
     // salva o último jogo no LS
     this.sorted_array = this.main_array.slice(0, parseInt(nros));
-    localStorage.setItem('lastGame', JSON.stringify(this.sorted_array));
-    
+    localStorage.setItem('lastGame_'+currentUser, JSON.stringify(this.sorted_array));
+
     // salva todos os jogos no LS
     this.games_array.push(this.sorted_array);
-    localStorage.setItem('historico', JSON.stringify(this.games_array));
-    
-    this.last_game.push( localStorage.getItem('lastGame'))
+    localStorage.setItem('historico_'+currentUser, JSON.stringify(this.games_array));
+
+    this.last_game.push(localStorage.getItem('lastGame_'+currentUser));
   };
 
   public reset_arr = () => {
     this.sorted_array = this.games_array = [];
-    localStorage.clear();
+    let currentUser = localStorage.getItem('isLoggedIn')
+    // localStorage.clear();
+    localStorage.removeItem('historico_'+currentUser);
+    localStorage.removeItem('lastGame_'+currentUser);
     window.location.reload();
+  };
+
+  public authenticateUser = (username: any, password: any) => {
+
+    if (localStorage.getItem('user_' + username)) {
+      if (localStorage.getItem('password_' + username) === password) {
+        localStorage.setItem('isLoggedIn', username);
+      } else {
+        return alert('senha incorreta para o usuário ' + username);
+      }
+    } else {
+      localStorage.setItem('user_' + username, username);
+      localStorage.setItem('password_' + username, password);
+      localStorage.setItem('isLoggedIn', username);
+      return alert('Bem vindo ' + username + ' uma nova conta foi criada');
+    }
+  };
+
+  public checkAuth = () => {
+    let info = localStorage.getItem('isLoggedIn');
+
+    if (info) return info;
+
+    return false;
+  };
+
+  public removeAuth = () => {
+    localStorage.removeItem('isLoggedIn');
   };
 }

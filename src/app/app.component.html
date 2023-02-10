@@ -12,14 +12,19 @@
         </div>
         <ng-template #prod_links>
           <div class="navbar-nav">
-            <a class="nav-link text-light" aria-current="page" href="/ng-mega-sena">Home</a>
+            <a
+              class="nav-link text-light"
+              aria-current="page"
+              href="/ng-mega-sena"
+              >Home</a
+            >
             <a class="nav-link text-light" href="/ng-mega-sena/jogos">Jogos</a>
           </div>
         </ng-template>
       </div>
     </div>
   </nav>
-
+  <button *ngIf="checkAuth()" type="button" class="btn btn-danger" (click)="exitApp()">Sair</button>
 </div>
 <!-- outlet -->
 <router-outlet> </router-outlet>
